@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - YBB Shop</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #000;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #000;
+            color: #fff;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        header .menu {
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex; /* Always show the navigation on desktop */
+            flex-direction: row; 
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #000;
+            color: #fff;
+            padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid #444;
+        }
+
+        .nav-links a:hover {
+            background: #444;
+        }
+
+        /* Show menu icon only on mobile view */
+        @media (max-width: 768px) {
+            header .menu {
+                display: block; /* Show the menu icon on mobile */
+            }
+
+            .nav-links {
+                display: none; /* Hide the nav links on mobile */
+                flex-direction: column; /* Stack the links vertically */
+                width: 100%;
+            }
+
+            /* Show the nav links when the menu icon is clicked */
+            .nav-links.show {
+                display: flex;
+            }
+        }
+
+        /* For desktop (larger than 768px), hide the menu icon */
+        @media (min-width: 769px) {
+            header .menu {
+                display: none; /* Hide the menu icon on desktop */
+            }
+
+            .nav-links {
+                display: flex; /* Show the nav links on desktop */
+                flex-direction: row; /* Arrange the links horizontally */
+                position: static; /* Fix position */
+                background: none;
+                color: #fff;
+                padding: 0;
+                box-shadow: none;
+            }
+        }
+
+        /* Products grid */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            padding: 2rem 1rem;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .product-card {
+            text-align: center;
+            background-color: #fff;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden; /* Ensures image zoom stays inside the card */
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            max-height: 150px;
+            object-fit: cover;
+            transition: transform 0.3s ease; /* Smooth zoom effect */
+        }
+
+        .product-card img:hover {
+            transform: scale(1.1); /* Zooms in the image */
+        }
+
+        .product-card h3 {
+            font-size: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        .product-card p {
+            font-size: 1rem;
+            margin: 0.5rem 0;
+            font-weight: bold;
+        }
+        .product-card a {
+            text-decoration: none; /* Removes underline from links */
+            color: inherit; /* Inherits text color from parent */
+            display: block; /* Makes the entire card clickable */
+            border-radius: 8px; /* Matches the card's border radius */
+            transition: background-color 0.3s, color 0.3s; /* Smooth effect */
+        }
+
+        .product-card a:hover {
+            background-color: #ddd; /* Light gray background on hover */
+            color: #000; /* Text turns black on hover */
+        }
+
+        .product-card a:active {
+            background-color: #444; /* Darker background when tapped */
+            color: #fff; /* White text on tap */
+        }
+        
+        section {
+            padding: 2rem 1rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            text-align: center;
+        }
+                /* Style for Contact Links */
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.contact-link {
+    font-size: 1.2rem;
+    margin: 0.8rem 0;
+    color: #000;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.contact-link i {
+    margin-right: 10px; /* Space between icon and text */
+    font-size: 1.5rem;
+}
+
+.contact-link:hover {
+    color: #007bff; /* Hover color */
+}
+/* For larger screen sizes (desktop), arrange the links horizontally */
+@media (min-width: 768px) {
+    .contact-links {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .contact-link {
+        margin: 0 1rem; /* Space between the links horizontally */
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Our Products</h1>
+        <span class="menu" onclick="toggleMenu()">☰</span>
+        <div class="nav-links" id="nav-links">
+            <a href="site.html#about">About Us</a>
+            <a href="site.html#featured">Featured Products</a>
+            <a href="site.html#contact">Contact</a>
+        </div>
+    </header>
+
+    <div class="products">
+        <div class="product-card">
+            <a href="product-men-white.html">
+                <img src="images/men_white.jpg" alt="Men's White T">
+                <h3>Men's White with black label and black logo</h3>
+                <p>₵300.00</p>
+            </a>
+        </div>
+        <div class="product-card">
+            <a href="product-men-blackY.html">
+                <img src="images/men_blackY.jpg" alt="Men's Black T">
+                <h3>Men's Black with yellow label and yellow logo</h3>
+                <p>₵300.00</p>
+            </a>
+        </div>
+        <div class="product-card">
+            <a href="product-men-black.html">
+                <img src="images/men_black.jpg" alt="Men's Black T">
+                <h3>Men's Black with white label and white logo</h3>
+                <p>₵300.00</p>
+            </a>
+        </div>
+        <div class="product-card">
+            <a href="product-men-blackb.html">
+                <img src="images/men_blackb.jpg" alt="Men's Black T">
+                <h3>Men's Black with yellow-white label and logo</h3>
+                <p>₵300.00</p>
+            </a>
+        </div>
+        <div class="product-card">
+            <a href="product-women-black.html">
+                <img src="images/women_blac" alt="Ladies Black Crop">
+                <h3>Ladies Black Crop with white label and white logo</h3>
+                <p>₵250.00</p>
+            </a>
+        </div>
+        <div class="product-card">
+            <a href="product-women-white.html">
+                <img src="images/women_whit" alt="Ladies White Crop">
+                <h3>Ladies White Crop with black label and black logo</h3>
+                <p>₵250.00</p>
+            </a>
+        </div>
+    </div>
+
+    <section id="contact">
+        <h2>Contact Us Now</h2>
+        
+        <div class="contact-links">
+            <!-- Email Link -->
+            <a href="mailto:contact@daofficialybb@gmail.com" class="contact-link" target="_blank">
+                <i class="fas fa-envelope"></i> Email
+            </a>
+            
+            <!-- Instagram Link -->
+            <a href="https://www.instagram.com/da.ybb" class="contact-link" target="_blank">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+            
+            <!-- WhatsApp Link -->
+            <a href="https://wa.me/+233597235718" class="contact-link" target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+        </div>
+    </section>
+</body>
+</html>
