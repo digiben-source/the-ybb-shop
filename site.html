@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YoungBlackBoy</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background-color: #fff;
+        }
+
+        /* Header with navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #000;
+            color: #fff;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        header .menu {
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #000;
+            color: #fff;
+            width: 200px;
+            padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #444;
+        }
+
+        .nav-links a:hover {
+            background: #444;
+        }
+
+        /* Main banner section */
+        .banner {
+            text-align: center;
+            padding: 2rem 1rem;
+            background-color: #f9f9f9;
+        }
+
+        .banner img {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            margin: 1rem auto;
+        }
+
+        .banner h2 {
+            font-size: 2rem;
+            margin: 1rem 0;
+        }
+
+        .banner p {
+            font-size: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        /* Section styling */
+        section {
+            padding: 2rem 1rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        section img {
+            display: block;
+            margin: 1rem auto;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Featured Products */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            padding: 2rem 1rem;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .product-card {
+            text-align: center;
+            background-color: #f9f9f9;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            max-height: 150px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .product-card h3 {
+            font-size: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        .product-card p {
+            font-size: 1rem;
+            margin: 0.5rem 0;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #000;
+            color: #fff;
+        }
+
+        .product-card a {
+            text-decoration: none; /* Removes underline from links */
+            color: inherit; /* Inherits text color from parent */
+            display: block; /* Makes the entire card clickable */
+            border-radius: 8px; /* Matches the card's border radius */
+            transition: background-color 0.3s, color 0.3s; /* Smooth effect */
+        }
+
+        .product-card a:hover {
+            background-color: #ddd; /* Light gray background on hover */
+            color: #000; /* Text turns black on hover */
+        }
+
+        .product-card a:active {
+            background-color: #444; /* Darker background when tapped */
+            color: #fff; /* White text on tap */
+        }
+        
+        /* Style for Contact Links */
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.contact-link {
+    font-size: 1.2rem;
+    margin: 0.8rem 0;
+    color: #000;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.contact-link i {
+    margin-right: 10px; /* Space between icon and text */
+    font-size: 1.5rem;
+}
+
+.contact-link:hover {
+    color: #007bff; /* Hover color */
+}
+
+/* For larger screen sizes (desktop), arrange the links horizontally */
+@media (min-width: 768px) {
+    .contact-links {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .contact-link {
+        margin: 0 1rem; /* Space between the links horizontally */
+    }
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>YBB Shop</h1>
+        <span class="menu" onclick="toggleMenu()">☰</span>
+        <div class="nav-links" id="nav-links">
+            <a href="#about">About Us</a>
+            <a href="#featured">Featured Products</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </header>
+
+    <!-- Banner Section -->
+    <div class="banner">
+        <img src="images/banner.jpg" alt="Main Banner Image">
+        <h2>The YoungBlackBoy Shop</h2>
+        <p>Our mission is to make all your "drips" unique.<br>
+        When it comes to getting quality and unique T's, look no further!.</p>
+    </div>
+
+    <!-- Example Sections -->
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Get to know The YoungBlackBoy brand and our love for quality! We’re all about creating stylish, comfortable, and top-notch products you’ll love to wear. Our journey is all about celebrating creativity and making you feel great every step of the way. Let’s redefine fashion together!</p>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section id="featured">
+        <h2>Featured Products</h2>
+        <div class="products">
+            <div class="product-card">
+                <a href="product-men-white.html">
+                    <img src="images/men_white.jpg" alt="Men's White T">
+                    <h3>Men's White with black label and black logo</h3>
+                    <p>₵300.00</p>
+                </a>
+            </div>
+            <div class="product-card">
+                <a href="product-men-blackY.html">
+                    <img src="images/men_blackY.jpg" alt="Men's Black T">
+                    <h3>Men's Black with yellow label and yellow logo</h3>
+                    <p>₵300.00</p>
+                </a>
+            </div>
+            <div class="product-card">
+                <a href="product-men-black.html">
+                    <img src="images/men_black.jpg" alt="Men's Black T">
+                    <h3>Men's Black with white label and white logo</h3>
+                    <p>₵300.00</p>
+                </a>
+            </div>
+            <div class="product-card">
+                <a href="product-men-blackb.html">
+                    <img src="images/men_blackb.jpg" alt="Men's Black T">
+                    <h3>Men's Black with yellow-white label and logo</h3>
+                    <p>₵300.00</p>
+                </a>
+            </div>
+            <div class="product-card">
+                <a href="product-women-black.html">
+                    <img src="images/women_blac" alt="Ladies Black Crop">
+                    <h3>Ladies Black Crop with white label and white logo</h3>
+                    <p>₵250.00</p>
+                </a>
+            </div>
+            <div class="product-card">
+                <a href="product-women-white.html">
+                    <img src="images/women_whit" alt="Ladies White Crop">
+                    <h3>Ladies White Crop with black label and black logo</h3>
+                    <p>₵250.00</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+<!-- Explore Our Catalog Section -->
+<section id="catalog" style="position: relative; text-align: center; overflow: hidden; height: 400px;">
+    <!-- Background Video -->
+    <video autoplay muted loop playsinline style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    ">
+        <source src="images/IMG_2430.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Content -->
+    <div style="position: relative; z-index: 1; padding: 2rem 1rem; color: #fff; background: rgba(0, 0, 0, 0.5); border-radius: 8px; display: inline-block;">
+        <h2 style="font-size: 2rem; margin: 1rem 0;">Explore Our Catalog</h2>
+        <p style="font-size: 1rem; margin: 0.5rem 0;">We make it easy to order the T's you need. <br> Put your money on your skin.</p>
+        <button style="
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 1rem;
+        " onclick="location.href='#featured';">Order Now</button>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+    <h2>Contact Us</h2>
+    <p>Have questions? Reach out to us through the following channels:</p>
+    
+    <div class="contact-links">
+        <!-- Email Link -->
+        <a href="mailto:contact@daofficialybb@gmail.com" class="contact-link" target="_blank">
+            <i class="fas fa-envelope"></i> Email
+        </a>
+        
+        <!-- Instagram Link -->
+        <a href="https://www.instagram.com/da.ybb" class="contact-link" target="_blank">
+            <i class="fab fa-instagram"></i> Instagram
+        </a>
+        
+        <!-- WhatsApp Link -->
+        <a href="https://wa.me/+233597235718" class="contact-link" target="_blank">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+    </div>
+</section>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 The YBB Shop. All rights reserved.</p>
+    </footer>
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        }
+    </script>
+</body>
+</html>

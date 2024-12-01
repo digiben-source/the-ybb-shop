@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men's Black T - The YBB Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .product-detail {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .product-detail img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        .product-detail h1 {
+            font-size: 2rem;
+            margin: 1rem 0;
+        }
+
+        .product-detail p {
+            font-size: 1rem;
+            margin: 1rem 0;
+        }
+
+        .product-detail .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        button {
+            background-color: #000;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #444;
+        }
+
+        a.back-to-shop {
+            text-decoration: none;
+            color: #000;
+            display: inline-block;
+            margin: 1rem 0;
+        }
+
+        a.back-to-shop:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #000;
+            color: #fff;
+        }
+
+        /* Header styles for mobile and desktop */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #000;
+            color: #fff;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        header .menu {
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex; /* Always show the navigation on desktop */
+            flex-direction: row; 
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #000;
+            color: #fff;
+            padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid #444;
+        }
+
+        .nav-links a:hover {
+            background: #444;
+        }
+
+        /* Show menu icon only on mobile view */
+        @media (max-width: 768px) {
+            header .menu {
+                display: block; /* Show the menu icon on mobile */
+            }
+
+            .nav-links {
+                display: none; /* Hide the nav links on mobile */
+                flex-direction: column; /* Stack the links vertically */
+                width: 100%;
+            }
+
+            /* Show the nav links when the menu icon is clicked */
+            .nav-links.show {
+                display: flex;
+            }
+        }
+
+        /* For desktop (larger than 768px), hide the menu icon */
+        @media (min-width: 769px) {
+            header .menu {
+                display: none; /* Hide the menu icon on desktop */
+            }
+
+            .nav-links {
+                display: flex; /* Show the nav links on desktop */
+                flex-direction: row; /* Arrange the links horizontally */
+                position: static; /* Fix position */
+                background: none;
+                color: #fff;
+                padding: 0;
+                box-shadow: none;
+            }
+        }
+                /* Style for Contact Links */
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.contact-link {
+    font-size: 1.2rem;
+    margin: 0.8rem 0;
+    color: #000;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.contact-link i {
+    margin-right: 10px; /* Space between icon and text */
+    font-size: 1.5rem;
+}
+
+.contact-link:hover {
+    color: #007bff; /* Hover color */
+}
+
+/* For larger screen sizes (desktop), arrange the links horizontally */
+@media (min-width: 768px) {
+    .contact-links {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .contact-link {
+        margin: 0 1rem; /* Space between the links horizontally */
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>The YBB Shop</h1>
+        <span class="menu" onclick="toggleMenu()">☰</span>
+        <div class="nav-links" id="nav-links">
+            <a href="site.html#about">About Us</a>
+            <a href="site.html#featured">Featured Products</a>
+            <a href="site.html#contact">Contact</a>
+        </div>
+    </header>
+
+    <!-- Product Details -->
+    <div class="product-detail">
+        <img src="images/men_blackY_fb.jpg" alt="Men's Black T">
+        <h1>Men's Black with yellow label and logo</h1>
+        <p>Experience ultimate comfort and style with our premium Men's Black T featuring a bold yellow label and logo. Designed with high-quality, breathable fabric, this T-shirt offers unmatched comfort for daily wear. The vibrant yellow detail adds a striking contrast, making it a standout piece for casual outings or layered looks. Upgrade your style with this versatile and modern wardrobe essential.</p>
+        <p class="price">₵300.00</p>
+        <a href="https://wa.me/+233598432327?text=Hi,%20I'm%20interested%20in%20the%20Men's%20Black%20T-Shirt%20with%20yellow%20label%20and%20logo."
+           target="_blank">
+            <button>Buy Now</button>
+        </a>
+    </div>
+
+    <!-- Back to Shop Link -->
+    <a href="site.html" class="back-to-shop">← Back to Shop</a>
+    <!-- Contact Section -->
+<section id="contact">
+    <h2>Contact Us</h2>
+    <p>Have questions? Reach out to us through the following channels:</p>
+    
+    <div class="contact-links">
+        <!-- Email Link -->
+        <a href="mailto:contact@daofficialybb@gmail.com" class="contact-link" target="_blank">
+            <i class="fas fa-envelope"></i> Email
+        </a>
+        
+        <!-- Instagram Link -->
+        <a href="https://www.instagram.com/da.ybb" class="contact-link" target="_blank">
+            <i class="fab fa-instagram"></i> Instagram
+        </a>
+        
+        <!-- WhatsApp Link -->
+        <a href="https://wa.me/+233597235718" class="contact-link" target="_blank">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+    </div>
+</section>
+
+
+    <footer>
+        <p>&copy; 2024 The YBB Shop. All rights reserved.</p>
+    </footer>
+    <!-- JavaScript to Toggle Menu -->
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            // Toggle the 'show' class to display or hide the nav links
+            navLinks.classList.toggle('show');
+        }
+    </script>
+
+</body>
+</html>
