@@ -61,7 +61,7 @@
             background: #444;
         }
 
-        /* Main banner section */
+               /* Main banner section */
         .banner {
             text-align: center;
             padding: 2rem 1rem;
@@ -84,6 +84,70 @@
             font-size: 1rem;
             margin: 0.5rem 0;
         }
+        /* Main banner section */
+.banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+    padding: 2rem;
+}
+
+.banner-content {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    gap: 2rem;
+}
+
+.banner img {
+    width: 100%;  /* Make the image take full width on small screens */
+    max-width: 600px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* On larger screens, adjust the image size */
+@media (min-width: 768px) {
+    .banner img {
+        width: 50%;  /* Set image to 50% width on larger screens */
+        max-width: 600px;
+    }
+}
+
+/* Banner text */
+.banner-text {
+    flex: 1;
+    text-align: left;
+}
+
+.banner-text h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.banner-text p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.banner-text button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.banner-text button:hover {
+    background-color: #444;
+}
 
         /* Section styling */
         section {
