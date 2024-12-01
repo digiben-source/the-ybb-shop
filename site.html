@@ -110,40 +110,39 @@
             max-width: 1200px;
         }
 
-/* Product card styling */
-.product-card {
-    text-align: center;
-    background-color: #f9f9f9;
-    padding: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: hidden; /* Ensures zoomed image doesn't spill out of the card */
-}
+        .product-card {
+            text-align: center;
+            background-color: #f9f9f9;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
-.product-card img {
-    width: 100%;
-    height: auto;
-    max-height: 150px;
-    object-fit: cover;
-    transition: transform 0.3s ease; /* Smooth zoom effect */
-}
+            /* Product card styling */
+        .product-card img {
+            width: 100%;
+            height: auto;
+            max-height: 150px;
+            object-fit: cover;
+            transition: transform 0.3s ease; /* Smooth zoom effect */
+        }
 
 .product-card img:hover {
     transform: scale(1.1); /* Zooms in the image */
 }
 
-.product-card h3 {
-    font-size: 1rem;
-    margin: 0.5rem 0;
-}
 
-.product-card p {
-    font-size: 1rem;
-    margin: 0.5rem 0;
-    font-weight: bold;
-}
+        .product-card h3 {
+            font-size: 1rem;
+            margin: 0.5rem 0;
+        }
 
+        .product-card p {
+            font-size: 1rem;
+            margin: 0.5rem 0;
+            font-weight: bold;
+        }
 
         footer {
             text-align: center;
@@ -208,63 +207,6 @@
         margin: 0 1rem; /* Space between the links horizontally */
     }
 }
-/* Main banner section */
-.banner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f9f9f9;
-    padding: 2rem;
-}
-
-.banner-content {
-    display: flex;
-    align-items: center;
-    max-width: 1200px;
-    width: 100%;
-    gap: 2rem;
-}
-
-.banner img {
-    width: 50%;
-    max-width: 600px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.banner-text {
-    flex: 1;
-    text-align: left;
-}
-
-.banner-text h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.banner-text p {
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.5;
-    font-weight: bold;
-}
-
-.banner-text button {
-    background-color: #000;
-    color: #fff;
-    border: none;
-    padding: 0.7rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.banner-text button:hover {
-    background-color: #444;
-}
-
 
 
     </style>
@@ -281,21 +223,15 @@
         </div>
     </header>
 
-<!-- Banner Section -->
-<div class="banner">
-    <div class="banner-content">
+    <!-- Banner Section -->
+    <div class="banner">
         <img src="images/banner.jpg" alt="Main Banner Image">
-        <div class="banner-text">
-            <h1>The YoungBlackBoy Shop</h1>
-            <p>Our mission is to make all your "drips" unique.<br>
-            When it comes to getting quality and unique T's, look no further!</p>
-            <button onclick="location.href='#featured';">Order Now</button>
-        </div>
+        <h2>The YoungBlackBoy Shop</h2>
+        <p>Our mission is to make all your "drips" unique.<br>
+        When it comes to getting quality and unique T's, look no further!.</p>
     </div>
-</div>
 
-
-    <!-- About -->
+    <!-- Example Sections -->
     <section id="about">
         <h2>About Us</h2>
         <p>Get to know The YoungBlackBoy brand and our love for quality! We’re all about creating stylish, comfortable, and top-notch products you’ll love to wear. Our journey is all about celebrating creativity and making you feel great every step of the way. Let’s redefine fashion together!</p>
@@ -389,7 +325,7 @@
             border-radius: 5px;
             cursor: pointer;
             margin-top: 1rem;
-        " onclick="location.href='products.html';">Order Now</button>
+        " onclick="location.href='#featured';">Order Now</button>
     </div>
 </section>
 
