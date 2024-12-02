@@ -27,7 +27,22 @@
             max-width: 400px;
             height: auto;
             margin-bottom: 1rem;
+            animation: slideIn 1s ease-out;
+            animation-fill-mode: forwards; /* Ensure the animation's final state persists */
+            opacity: 0; /* Start invisible */
         }
+
+        /* Add slide-in animation */
+        @keyframes slideIn {
+        from {
+        transform: translateX(-100%);
+        opacity: 0;
+        }
+        to {
+        transform: translateX(0);
+        opacity: 1;
+        }
+    }
 
         .product-detail h1 {
             font-size: 2rem;
