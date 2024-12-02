@@ -60,6 +60,13 @@
         .nav-links a:hover {
             background: #444;
         }
+        /* Show menu on hover for desktop */
+@media (min-width: 768px) {
+    #menu:hover + #nav-links,
+    #nav-links:hover {
+        display: flex;
+    }
+}
 
 /* Desktop Styles */
 .banner {
@@ -338,13 +345,13 @@
     <!-- Header -->
     <header>
         <h1>YBB Shop</h1>
-        <span class="menu" onclick="toggleMenu()">☰</span>
+        <span class="menu" id="menu">☰</span>
         <div class="nav-links" id="nav-links">
             <a href="#about">About Us</a>
             <a href="#featured">Featured Products</a>
             <a href="#contact">Contact</a>
         </div>
-    </header>
+    </header>    
 
  <!-- Banner Section -->
 <div class="banner">
@@ -505,10 +512,53 @@
         <p>&copy; 2024 The YBB Shop. All rights reserved.</p>
     </footer>
     <script>
-        function toggleMenu() {
-            const navLinks = document.getElementById('nav-links');
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        }
+        // Function to toggle menu visibility
+function toggleMenu(event) {
+    const navLinks = document.getElementById('nav-links');
+    const isVisible = navLinks.style.display === 'flex';
+    navLinks.style.display = isVisible ? 'none' : 'flex';
+
+    // Stop click from propagating
+    event.stopPropagation();
+
+    // Add or remove event listener for closing on outside clicks
+    if (!isVisible) {
+        document.addEventListener('click', closeMenuOnOutsideClick);
+    } else {
+        document.removeEventListener('click', closeMenuOnOutsideClick);
+    }
+}
+
+// Function to close menu when clicking outside
+function closeMenuOnOutsideClick(event) {
+    const navLinks = document.getElementById('nav-links');
+    const menu = document.getElementById('menu');
+
+    if (!menu.contains(event.target) && !navLinks.contains(event.target)) {
+        navLinks.style.display = 'none';
+        document.removeEventListener('click', closeMenuOnOutsideClick);
+    }
+}
+
+// Set up event listeners for menu toggle
+document.getElementById('menu').addEventListener('click', toggleMenu);
+
+// For desktop: Show menu on hover
+document.addEventListener('DOMContentLoaded', () => {
+    const menu = document.getElementById('menu');
+    const navLinks = document.getElementById('nav-links');
+
+    if (window.innerWidth >= 768) {
+        menu.addEventListener('mouseover', () => {
+            navLinks.style.display = 'flex';
+        });
+
+        navLinks.addEventListener('mouseleave', () => {
+            navLinks.style.display = 'none';
+        });
+    }
+});
     </script>
+    
 </body>
 </html>
