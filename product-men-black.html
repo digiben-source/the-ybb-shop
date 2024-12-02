@@ -253,12 +253,48 @@
     </footer>
     <!-- JavaScript to Toggle Menu -->
     <script>
+        // Function to toggle menu visibility
         function toggleMenu() {
             const navLinks = document.getElementById('nav-links');
-            // Toggle the 'show' class to display or hide the nav links
+            const isVisible = navLinks.classList.contains('show');
             navLinks.classList.toggle('show');
+    
+            // Add or remove event listener based on visibility
+            if (!isVisible) {
+                document.addEventListener('click', closeMenuOnOutsideTap);
+            } else {
+                document.removeEventListener('click', closeMenuOnOutsideTap);
+            }
         }
-    </script>
+    
+        // Function to close the menu when clicking outside
+        function closeMenuOnOutsideTap(event) {
+            const menu = document.querySelector('.menu');
+            const navLinks = document.getElementById('nav-links');
+    
+            // Check if the click is outside the menu and nav links
+            if (!menu.contains(event.target) && !navLinks.contains(event.target)) {
+                navLinks.classList.remove('show');
+                document.removeEventListener('click', closeMenuOnOutsideTap);
+            }
+        }
+    
+        // Add hover functionality for desktop
+        document.addEventListener('DOMContentLoaded', () => {
+            const menu = document.querySelector('.menu');
+            const navLinks = document.getElementById('nav-links');
+    
+            if (window.innerWidth >= 768) {
+                menu.addEventListener('mouseover', () => {
+                    navLinks.classList.add('show');
+                });
+    
+                navLinks.addEventListener('mouseleave', () => {
+                    navLinks.classList.remove('show');
+                });
+            }
+        });
+    </script>    
 
 </body>
 </html>
