@@ -28,7 +28,24 @@
             max-width: 400px;
             height: auto;
             margin-bottom: 1rem;
+            animation: slideIn 1s ease-out;
+            animation-fill-mode: forwards; /* Ensure the animation's final state persists */
+            opacity: 0; /* Start invisible */
         }
+
+        /* Add slide-in animation */
+        @keyframes slideIn {
+        from {
+        transform: translateX(-100%);
+        opacity: 0;
+        }
+        to {
+        transform: translateX(0);
+        opacity: 1;
+        }
+    }
+
+
 
         .product-detail h1 {
             font-size: 2rem;
@@ -253,6 +270,7 @@
     </footer>
     <!-- JavaScript to Toggle Menu -->
     <script>
+        
         // Function to toggle menu visibility
         function toggleMenu() {
             const navLinks = document.getElementById('nav-links');
@@ -294,6 +312,10 @@
                 });
             }
         });
+        document.addEventListener('DOMContentLoaded', () => {
+        const productImage = document.querySelector('.product-detail img');
+        productImage.style.opacity = '1'; // Ensure visibility for animation
+    });
     </script>    
 
 </body>
