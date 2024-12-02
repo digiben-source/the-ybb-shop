@@ -61,9 +61,7 @@
             background: #444;
         }
 
-        /* Default styles for PC */
-@media screen and (min-width: 768px) {
-/* Main banner section */
+/* Desktop Styles */
 .banner {
     display: flex;
     align-items: center;
@@ -119,59 +117,44 @@
     background-color: #444;
 }
 
-/* Styles for phones */
+/* Mobile Styles */
 @media screen and (max-width: 767px) {
     .banner {
-        display: flex;
-        flex-direction: column; /* Stack content vertically */
-        align-items: center;
         text-align: center;
-        padding: 2rem 1rem;
+        padding: 1.5rem 1rem;
         background-color: #f9f9f9;
     }
 
     .banner img {
-        width: 90%; /* Limit image width */
-        max-width: 400px; /* Adjust for small screens */
+        width: 90%;
+        max-width: 400px;
         height: auto;
-        margin-bottom: 1rem;
+        margin: 1rem auto;
         border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .banner-text {
-        width: 90%; /* Center and limit text width */
+        margin-top: 1rem;
+        text-align: center;
     }
 
     .banner-text h2 {
-        font-size: 1.5rem; /* Adjust heading size */
-        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
     }
 
     .banner-text p {
         font-size: 1rem;
-        line-height: 1.4;
         margin-bottom: 1rem;
     }
 
     .banner-text button {
-        background-color: #000;
-        color: #fff;
-        border: none;
-        padding: 0.7rem 1.5rem;
+        padding: 0.6rem 1.2rem;
         font-size: 1rem;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-
-    .banner-text button:hover {
-        background-color: #444;
     }
 }
 
-}
-        
 
         /* Section styling */
         section {
