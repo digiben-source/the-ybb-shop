@@ -162,17 +162,18 @@
                 box-shadow: none;
             }
         }
-                /* Style for Contact Links */
+/* Style for Contact Links */
 .contact-links {
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* Horizontal layout by default */
+    justify-content: center;
     align-items: center;
+    gap: 10px; /* Space between links */
     margin-top: 1rem;
 }
 
 .contact-link {
-    font-size: 1.2rem;
-    margin: 0.8rem 0;
+    font-size: 1rem; /* Unified font size for all screens */
     color: #000;
     text-decoration: none;
     display: flex;
@@ -181,8 +182,8 @@
 }
 
 .contact-link i {
-    margin-right: 10px; /* Space between icon and text */
-    font-size: 1.5rem;
+    margin-right: 8px; /* Space between icon and text */
+    font-size: 1.2rem; /* Unified icon size */
 }
 
 .contact-link:hover {
