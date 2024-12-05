@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YoungBlackBoy</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background-color: #fff;
+        }
+    
+        /* Header styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #000;
+            color: #fff;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+    
+        header h1 {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+    
+        .header-icons {
+            display: flex;
+            align-items: center;
+            gap: 1rem; /* Space between menu and cart icon */
+        }
+    
+        .menu,
+        #cart-link {
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+        }
+    
+        #cart-link {
+            position: relative;
+        }
+    
+        #cart-count {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background: red;
+            color: white;
+            font-size: 0.8rem;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+    
+        .nav-links {
+            display: flex; /* Always show navigation links for larger screens */
+            flex-direction: row;
+            gap: 1rem;
+        }
+    
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid #444;
+        }
+    
+        .nav-links a:hover {
+            background: #444;
+        }
+    
+        /* Mobile-specific styles */
+        @media (max-width: 768px) {
+            header {
+                padding: 0.5rem 1rem;
+            }
+    
+            /* Hidden by default */
+        .nav-links {
+            display: none; /* Hidden on mobile */
+            flex-direction: column;
+            background-color: #000;
+            color: #fff;
+            padding: 1rem;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 40%;
+            }
+
+            /* Visible when "show" class is applied */
+        .nav-links.show {
+            display: flex;
+            }
+
+    
+            .header-icons {
+                display: flex;
+                align-items: center;
+            }
+    
+            .menu {
+                display: block; /* Show menu icon on mobile */
+            }
+        }
+    
+        /* Desktop-specific styles */
+        @media (min-width: 769px) {
+            .menu {
+                display: none; /* Hide menu icon on desktop */
+            }
+    
+            .nav-links {
+                display: flex;
+                flex-direction: row; /* Horizontal links */
+                position: static; /* Default position */
+                padding: 0;
+                background: none;
+                box-shadow: none;
+            }
+            .menu {
+            display: none; /* Hide menu icon on desktop */
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: row; /* Horizontal links */
+            position: static; /* Default position */
+            padding: 0;
+            background: none;
+            box-shadow: none;
+        }
+
+        .header-icons {
+            margin-left: auto; /* Ensure icons stay to the right */
+        }
+        }
+    
+        /* Banner Styling */
+        .banner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f9f9f9;
+            padding: 2rem;
+        }
+    
+        .banner-content {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            width: 100%;
+            gap: 2rem;
+        }
+    
+        .banner img {
+            width: 50%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    
+        .banner-text {
+            flex: 1;
+            text-align: left;
+        }
+    
+        .banner-text h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+    
+        .banner-text p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+    
+        .banner-text button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+    
+        .banner-text button:hover {
+            background-color: #444;
+        }
+    
+        /* Mobile Styles */
+        @media screen and (max-width: 767px) {
+            .banner {
+                display: block;
+                text-align: center;
+                padding: 1.5rem 1rem;
+            }
+    
+            .banner-content {
+                flex-direction: column;
+                align-items: center;
+            }
+    
+            .banner img {
+                width: 90%;
+                max-width: 400px;
+                margin-bottom: 1rem;
+            }
+    
+            .banner-text {
+                text-align: center;
+            }
+    
+            .banner-text h2 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+    
+            .banner-text p {
+                font-size: 1rem;
+                margin-bottom: 1rem;
+            }
+    
+            .banner-text button {
+                padding: 0.6rem 1.2rem;
+                font-size: 1rem;
+            }
+        }
+    
+        /* Section styling */
+        section {
+            padding: 2rem 1rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            text-align: center;
+        }
+    
+        section img {
+            display: block;
+            margin: 1rem auto;
+            max-width: 100%;
+            height: auto;
+        }
+    
+        /* Featured Products */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            padding: 2rem 1rem;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+    
+        @media (min-width: 768px) {
+            .products {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+    
+        .product-card {
+            text-align: center;
+            background-color: #f9f9f9;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    
+        .product-card img {
+            width: 100%;
+            height: auto;
+            max-height: 150px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+    
+        .product-card img:hover {
+            transform: scale(1.1);
+        }
+    
+        .product-card h3 {
+            font-size: 1rem;
+            margin: 0.5rem 0;
+        }
+    
+        .product-card p {
+            font-size: 1rem;
+            margin: 0.5rem 0;
+            font-weight: bold;
+        }
+    
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #000;
+            color: #fff;
+        }
+    
+        .product-card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+    
+        .product-card a:hover {
+            background-color: #ddd;
+            color: #000;
+        }
+    
+        .product-card a:active {
+            background-color: #444;
+            color: #fff;
+        }
+    
+        /* Contact Links */
+        .contact-links {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+    
+        .contact-link {
+            font-size: 1rem;
+            color: #000;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 0.5rem;
+        }
+    
+        .contact-link i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+    
+        .contact-link:hover {
+            color: #007bff;
+        }
+
+    </style>    
+    
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>The YBB Shop</h1>
+        <div class="header-icons">
+            <span class="menu" onclick="toggleMenu()">☰</span>
+            <a href="cart.html" id="cart-link">
+                <i class="fas fa-shopping-bag"></i>
+                <span id="cart-count">0</span>
+            </a>
+        </div>
+        <div class="nav-links" id="nav-links">
+            <a href="#about">About Us</a>
+            <a href="#featured">Featured Products</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </header>
+    
+    <div id="cart-message"></div>
+     
+
+ <!-- Banner Section -->
+<div class="banner">
+    <div class="banner-content">
+        <img src="images/banner.jpg" alt="Main Banner Image">
+        <div class="banner-text">
+            <h2>The YoungBlackBoy Shop</h2>
+            <p>Our mission is to make all your "drips" unique.<br>
+            When it comes to getting quality and unique T's, look no further!</p>
+            <button onclick="location.href='#featured';">Order Now</button>
+        </div>
+    </div>
+</div>
+
+    <!-- Example Sections -->
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Get to know The YoungBlackBoy brand and our love for quality! We’re all about creating stylish, comfortable, and top-notch products you’ll love to wear. Our journey is all about celebrating creativity and making you feel great every step of the way. Let’s redefine fashion together!</p>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section id="featured">
+        <h2>Featured Products</h2>
+        <div class="products">
+            <div class="product-card">
+                <a href="product-men-white.html">
+                    <img src="images/men_white.jpg" alt="Men's White T">
+                    <h3>Men's White with black label and black logo</h3>
+                    <p>₵300.00</p>
+                </a>
+            </div>
+            <div class="product-card">
+                <a href="product-men-blackY.html">
+                    <img src="images/men_blackY.jpg" alt="Men's Black T">
+                    <h3>Men's Black with yellow label and yellow logo</h3>
+                    <p>₵300.00</p>
+                </a>
+            </div>
+            <div class="product-card">
+                <a href="product-men-black.html">
+                    <img src="images/men_black.jpg" alt="Men's Black T">
+                    <h3>Men's Black with white label and white logo</h3>
+                    <p>₵300.00</p>
+                </a>
+            </div>
+            <div class="product-card">
+                <a href="product-men-blackb.html">
+                    <img src="images/men_blackb.jpg" alt="Men's Black T">
+                    <h3>Men's Black with yellow-white label and logo</h3>
+                    <p>₵300.00</p>
+                </a>
+            </div>
+            <div class="product-card">
+                <a href="product-women-black.html">
+                    <img src="images/women_blac" alt="Ladies Black Crop">
+                    <h3>Ladies Black Crop with white label and white logo</h3>
+                    <p>₵250.00</p>
+                </a>
+            </div>
+            <div class="product-card">
+                <a href="product-women-white.html">
+                    <img src="images/women_whit" alt="Ladies White Crop">
+                    <h3>Ladies White Crop with black label and black logo</h3>
+                    <p>₵250.00</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="story">
+        <h2>Story</h2>
+        <p>We started a few years ago with a simple goal: to be the most reliable store for quality clothing in Ghana. Since then, we’ve been committed to offering the best quality at the best possible prices. Whether you're shopping for everyday wear or something special, you don’t need to look anywhere else. Your satisfaction is our priority, and we always aim to exceed your expectations!</p>
+    </section>
+    <section id="payment">
+        <h2>Payment information</h2>
+        <p>For orders within the Greater Accra Region, you can pay on delivery. For orders outside the region, payment is required before delivery. We accept payments via mobile money or cash, making it easy and convenient for you!</p>
+    </section>
+
+<!-- Explore Our Catalog Section -->
+<section id="catalog" style="position: relative; text-align: center; overflow: hidden; height: 400px;">
+    <!-- Background Video -->
+    <video autoplay muted loop playsinline style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    ">
+        <source src="images/IMG_2430.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Content -->
+    <div style="position: relative; z-index: 1; padding: 2rem 1rem; color: #fff; background: rgba(0, 0, 0, 0.5); border-radius: 8px; display: inline-block;">
+        <h2 style="font-size: 2rem; margin: 1rem 0;">Explore Our Catalog</h2>
+        <p style="font-size: 1rem; margin: 0.5rem 0;">We make ordering the perfect T's online simple. <br> Invest in your style—because your wardrobe defines you.</p>
+        <button style="
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 1rem;
+        " onclick="location.href='products.html';">Order Now</button>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+    <h2>Contact Us</h2>
+    <p>Have questions? Reach out to us through the following channels:</p>
+    <h5>Address</h5>
+    <p>TDC Comm. 26 Affordable Housing, Tema</p>
+    <h5>Open hours</h5>
+    <p>Daily 08:00 AM — 5:00 PM</p>
+    
+    <div class="contact-links">
+        <!-- Email Link -->
+        <a href="mailto:contact@daofficialybb@gmail.com" class="contact-link" target="_blank">
+            <i class="fas fa-envelope"></i> Email
+        </a>
+        
+        <!-- Instagram Link -->
+        <a href="https://www.instagram.com/da.ybb" class="contact-link" target="_blank">
+            <i class="fab fa-instagram"></i> Instagram
+        </a>
+        
+        <!-- WhatsApp Link -->
+        <a href="https://wa.me/+233597235718" class="contact-link" target="_blank">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+    </div>
+</section>
+
+<!-- Location Map Section -->
+<section id="location" style="margin-top: 2rem;">
+    <h2 style="text-align: center;">Our Location</h2>
+    <p style="text-align: center;">Visit us at our store or find us on the map below:</p>
+    <div style="width: 100%; height: 400px; display: flex; justify-content: center; align-items: center;">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.957962593393!2d0.0384421888549706!3d5.719195200000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10207f1efae99cd1%3A0x398ce84b12eaa5d3!2sTDC%20Comm%2026%20Block%20C7!5e0!3m2!1sen!2sgh!4v1733127499250!5m2!1sen!2sgh" 
+            width="90%" 
+            height="100%" 
+            style="border: 0; border-radius: 8px;" 
+            allowfullscreen="" 
+            loading="lazy">
+        </iframe>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 The YBB Shop. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // Function to toggle menu visibility
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            const isVisible = navLinks.classList.contains('show');
+            navLinks.classList.toggle('show');
+    
+            // Add or remove event listener based on visibility
+            if (!isVisible) {
+                document.addEventListener('click', closeMenuOnOutsideTap);
+            } else {
+                document.removeEventListener('click', closeMenuOnOutsideTap);
+            }
+        }
+    
+        // Function to close the menu when clicking outside
+        function closeMenuOnOutsideTap(event) {
+            const menu = document.querySelector('.menu');
+            const navLinks = document.getElementById('nav-links');
+    
+            // Check if the click is outside the menu and nav links
+            if (!menu.contains(event.target) && !navLinks.contains(event.target)) {
+                navLinks.classList.remove('show');
+                document.removeEventListener('click', closeMenuOnOutsideTap);
+            }
+        }
+    
+        // Add hover functionality for desktop
+        document.addEventListener('DOMContentLoaded', () => {
+            const menu = document.querySelector('.menu');
+            const navLinks = document.getElementById('nav-links');
+    
+            if (window.innerWidth >= 768) {
+                menu.addEventListener('mouseover', () => {
+                    navLinks.classList.add('show');
+                });
+    
+                navLinks.addEventListener('mouseleave', () => {
+                    navLinks.classList.remove('show');
+                });
+            }
+        });
+    
+        // New Features: Cart Management
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+        }
+    
+        function updateCartCount() {
+            const cartCountElement = document.getElementById('cart-count');
+            if (cartCountElement) {
+                cartCountElement.textContent = cart.length;
+            }
+        }
+    
+        // Initialize the cart count on page load
+        document.addEventListener('DOMContentLoaded', updateCartCount);
+    </script>
+    
+</body>
+</html>
