@@ -61,7 +61,7 @@
     table th, table td {
         padding: 0.75rem;
         text-align: left;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 2px solid #000;
     }
 
     table th {
@@ -74,7 +74,7 @@
     }
 
     /* Responsive table adjustments for small screens */
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
         table {
             display: block; /* Make the table a block for scrolling */
         }
@@ -85,7 +85,7 @@
 
         table tr {
             display: block;
-            border-bottom: 1px solid #ccc;
+            border-bottom: 2px solid #000; /* Thicker separators for mobile too */
             margin-bottom: 1rem;
             padding: 0.5rem;
         }
@@ -95,6 +95,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 0.5rem 0;
+            border-bottom: none;
         }
 
         table td::before {
