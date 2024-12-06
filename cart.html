@@ -51,26 +51,86 @@
             padding: 1rem;
         }
 
+        /* Maintain current desktop styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1rem;
+    }
+
+    table th, table td {
+        padding: 0.75rem;
+        text-align: left;
+        border-bottom: 1px solid #ccc;
+    }
+
+    table th {
+        background-color: #f0f0f0;
+        font-weight: bold;
+    }
+
+    table td {
+        vertical-align: middle;
+    }
+
+    /* Responsive table adjustments for small screens */
+    @media (max-width: 600px) {
         table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 1rem;
+            display: block; /* Make the table a block for scrolling */
         }
 
-        table th, table td {
-            padding: 0.75rem;
-            text-align: left;
+        table thead {
+            display: none; /* Hide the main table header */
+        }
+
+        table tr {
+            display: block;
             border-bottom: 1px solid #ccc;
-        }
-
-        table th {
-            background-color: #f0f0f0;
-            font-weight: bold;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
         }
 
         table td {
-            vertical-align: middle;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
         }
+
+        table td::before {
+            content: attr(data-label); /* Use data-label for headers */
+            font-weight: bold;
+            color: #555;
+            text-align: left;
+            flex: 1;
+        }
+    }
+
+    /* Style for the select dropdown */
+    select {
+        padding: 0.5rem;
+        border: 1px solid #000;
+        border-radius: 5px;
+        background-color: #fff;
+        color: #000;
+        font-size: 1rem;
+        appearance: none; /* Removes native OS styling */
+        width: 100%; /* Full-width for smaller screens */
+        max-width: 150px; /* Optional limit on width for larger screens */
+    }
+
+    select:focus {
+        border-color: #444;
+        outline: none;
+    }
+
+    /* Optional: Add a custom dropdown arrow */
+    select {
+        background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"%3E%3Cpath fill="%23000" d="M2 0L0 2h4z"/%3E%3C/svg%3E');
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 10px;
+    }
 
         .cart-summary {
             text-align: right;
@@ -92,54 +152,6 @@
         .empty-cart-message a:hover {
             text-decoration: underline;
         }
-
-    /* Make the cart table scrollable for small screens */
-    .cart-container {
-        overflow-x: auto;
-    }
-
-    table {
-        width: 100%;
-    }
-
-    @media (max-width: 600px) {
-        /* Adjustments for smaller screens */
-        table {
-            display: block;
-        }
-
-        table tr {
-            display: flex;
-            flex-wrap: wrap;
-            border-bottom: 1px solid #ccc;
-            margin-bottom: 1rem;
-        }
-
-        table td, table th {
-            flex: 1 1 100%; /* Stack cells vertically */
-            text-align: left;
-        }
-
-        table td[data-label]:before {
-            content: attr(data-label); /* Use data-label for column names */
-            font-weight: bold;
-            display: inline-block;
-            width: 100px;
-        }
-
-        table th {
-            display: none; /* Hide table headers on mobile */
-        }
-
-        .cart-summary {
-            text-align: center; /* Center align the cart summary */
-        }
-
-        button, select {
-            width: 100%; /* Make buttons and dropdowns full width for better usability */
-        }
-    }
-
 
         button {
             background-color: #000;
