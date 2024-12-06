@@ -93,6 +93,54 @@
             text-decoration: underline;
         }
 
+    /* Make the cart table scrollable for small screens */
+    .cart-container {
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    @media (max-width: 600px) {
+        /* Adjustments for smaller screens */
+        table {
+            display: block;
+        }
+
+        table tr {
+            display: flex;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 1rem;
+        }
+
+        table td, table th {
+            flex: 1 1 100%; /* Stack cells vertically */
+            text-align: left;
+        }
+
+        table td[data-label]:before {
+            content: attr(data-label); /* Use data-label for column names */
+            font-weight: bold;
+            display: inline-block;
+            width: 100px;
+        }
+
+        table th {
+            display: none; /* Hide table headers on mobile */
+        }
+
+        .cart-summary {
+            text-align: center; /* Center align the cart summary */
+        }
+
+        button, select {
+            width: 100%; /* Make buttons and dropdowns full width for better usability */
+        }
+    }
+
+
         button {
             background-color: #000;
             color: #fff;
@@ -152,6 +200,7 @@
         .contact-link:hover {
             color: #007bff; /* Hover color */
         }
+        
     </style>
 </head>
 <body>
@@ -172,6 +221,7 @@
             <thead>
                 <tr>
                     <th>Item</th>
+                    <th>Size</th>
                     <th>Price</th>
                     <th>Action</th>
                 </tr>
@@ -180,6 +230,7 @@
                 <!-- Rows will be dynamically inserted here -->
             </tbody>
         </table>
+        
 
         <div class="empty-cart-message" id="empty-cart-message" style="display: none;">
         <p>Your shopping cart is empty.</p>
@@ -222,35 +273,50 @@
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
         function renderCart() {
-            const cartTableBody = document.querySelector('#cart-items tbody');
-            const cartTotal = document.getElementById('cart-total');
-            const emptyCartMessage = document.getElementById('empty-cart-message');
+    const cartTableBody = document.querySelector('#cart-items tbody');
+    const cartTotal = document.getElementById('cart-total');
+    const emptyCartMessage = document.getElementById('empty-cart-message');
 
-            cartTableBody.innerHTML = '';
-            let total = 0;
+    cartTableBody.innerHTML = '';
+    let total = 0;
 
-            if (cart.length === 0) {
-                emptyCartMessage.style.display = 'block';
-                cartTableBody.parentElement.style.display = 'none';
-            } else {
-                emptyCartMessage.style.display = 'none';
-                cartTableBody.parentElement.style.display = 'table';
+    if (cart.length === 0) {
+        emptyCartMessage.style.display = 'block';
+        cartTableBody.parentElement.style.display = 'none';
+    } else {
+        emptyCartMessage.style.display = 'none';
+        cartTableBody.parentElement.style.display = 'table';
 
-                cart.forEach((item, index) => {
-                    total += item.price;
+        cart.forEach((item, index) => {
+            total += item.price;
 
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${item.name}</td>
-                        <td>₵${item.price.toFixed(2)}</td>
-                        <td><button class="remove-item" onclick="removeItem(${index})">Remove</button></td>
-                    `;
-                    cartTableBody.appendChild(row);
-                });
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${item.name}</td>
+                <td>
+                    <select onchange="updateSize(${index}, this.value)">
+                        <option value="Undefined" ${item.size === 'Undefined' ? 'selected' : ''}>Undefined</option>
+                        <option value="Medium" ${item.size === 'Medium' ? 'selected' : ''}>Medium</option>
+                        <option value="Large" ${item.size === 'Large' ? 'selected' : ''}>Large</option>
+                        <option value="X-Large" ${item.size === 'X-Large' ? 'selected' : ''}>X-Large</option>
+                        <option value="2X-Large" ${item.size === '2X-Large' ? 'selected' : ''}>2X-Large</option>
+                    </select>
+                </td>
+                <td>₵${item.price.toFixed(2)}</td>
+                <td><button class="remove-item" onclick="removeItem(${index})">Remove</button></td>
+            `;
+            cartTableBody.appendChild(row);
+        });
 
-                cartTotal.innerText = `Total: ₵${total.toFixed(2)}`;
-            }
-        }
+        cartTotal.innerText = `Total: ₵${total.toFixed(2)}`;
+    }
+}
+
+function updateSize(index, size) {
+    cart[index].size = size;
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
 
         function removeItem(index) {
             cart.splice(index, 1);
@@ -259,19 +325,20 @@
         }
 
         function checkout() {
-            if (cart.length === 0) {
-                alert('Your cart is empty!');
-                return;
-            }
+    if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+    }
 
-            let message = 'Hello, I want to buy:\n';
-            cart.forEach((item, index) => {
-                message += `${index + 1}. ${item.name} - ₵${item.price.toFixed(2)}\n`;
-            });
+    let message = 'Hello, I want to buy:\n';
+    cart.forEach((item, index) => {
+        message += `${index + 1}. ${item.name} (Size: ${item.size}) - ₵${item.price.toFixed(2)}\n`;
+    });
 
-            const whatsappURL = `https://wa.me/+233597235718?text=${encodeURIComponent(message)}`;
-            window.open(whatsappURL, '_blank');
-        }
+    const whatsappURL = `https://wa.me/+233597235718?text=${encodeURIComponent(message)}`;
+    window.open(whatsappURL, '_blank');
+}
+
 
         renderCart();
     </script>
