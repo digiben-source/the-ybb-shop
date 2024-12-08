@@ -14,7 +14,7 @@
             flex-direction: column;
             min-height: 100vh;
         }
-
+    
         header {
             display: flex;
             justify-content: space-between;
@@ -23,137 +23,138 @@
             color: #fff;
             padding: 1rem;
         }
-
+    
         header h1 {
             font-size: 1.2rem;
         }
-
+    
         .breadcrumb {
             background-color: #f8f8f8;
             padding: 10px 20px;
             text-align: center;
         }
-
+    
         .breadcrumb a {
             text-decoration: none;
             color: #000;
             margin: 0 5px;
         }
-
+    
         .breadcrumb a:hover {
             text-decoration: underline;
         }
-
+    
         .cart-container {
             flex: 1;
             max-width: 800px;
             margin: 2rem auto;
             padding: 1rem;
         }
-
+    
         /* Maintain current desktop styling */
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 1rem;
-    }
-
-    table th, table td {
-        padding: 0.75rem;
-        text-align: left;
-        border-bottom: 2px solid #000;
-    }
-
-    table th {
-        background-color: #f0f0f0;
-        font-weight: bold;
-    }
-
-    table td {
-        vertical-align: middle;
-    }
-
-    /* Responsive table adjustments for small screens */
-    @media (max-width: 768px) {
         table {
-            display: block; /* Make the table a block for scrolling */
-        }
-
-        table thead {
-            display: none; /* Hide the main table header */
-        }
-
-        table tr {
-            display: block;
-            border-bottom: 2px solid #000; /* Thicker separators for mobile too */
+            width: 100%;
+            border-collapse: collapse;
             margin-bottom: 1rem;
-            padding: 0.5rem;
         }
-
+    
+        table th,
         table td {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 0;
-            border-bottom: none;
-        }
-
-        table td::before {
-            content: attr(data-label); /* Use data-label for headers */
-            font-weight: bold;
-            color: #555;
+            padding: 0.75rem;
             text-align: left;
-            flex: 1;
+            border-bottom: 2px solid #000;
         }
-    }
-
-    /* Style for the select dropdown */
-    select {
-        padding: 0.5rem;
-        border: 1px solid #000;
-        border-radius: 5px;
-        background-color: #fff;
-        color: #000;
-        font-size: 1rem;
-        appearance: none; /* Removes native OS styling */
-        width: 100%; /* Full-width for smaller screens */
-        max-width: 150px; /* Optional limit on width for larger screens */
-    }
-
-    select:focus {
-        border-color: #444;
-        outline: none;
-    }
-
-    /* Optional: Add a custom dropdown arrow */
-    select {
-        background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"%3E%3Cpath fill="%23000" d="M2 0L0 2h4z"/%3E%3C/svg%3E');
-        background-repeat: no-repeat;
-        background-position: right 10px center;
-        background-size: 10px;
-    }
-
+    
+        table th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+    
+        table td {
+            vertical-align: middle;
+        }
+    
+        /* Responsive table adjustments for small screens */
+        @media (max-width: 768px) {
+            table {
+                display: block; /* Make the table a block for scrolling */
+            }
+    
+            table thead {
+                display: none; /* Hide the main table header */
+            }
+    
+            table tr {
+                display: block;
+                border-bottom: 2px solid #000; /* Thicker separators for mobile too */
+                margin-bottom: 1rem;
+                padding: 0.5rem;
+            }
+    
+            table td {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.5rem 0;
+                border-bottom: none;
+            }
+    
+            table td::before {
+                content: attr(data-label); /* Use data-label for headers */
+                font-weight: bold;
+                color: #555;
+                text-align: left;
+                flex: 1;
+            }
+        }
+    
+        /* Style for the select dropdown */
+        select {
+            padding: 0.5rem;
+            border: 1px solid #000;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #000;
+            font-size: 1rem;
+            appearance: none; /* Removes native OS styling */
+            width: 100%; /* Full-width for smaller screens */
+            max-width: 150px; /* Optional limit on width for larger screens */
+        }
+    
+        select:focus {
+            border-color: #444;
+            outline: none;
+        }
+    
+        /* Optional: Add a custom dropdown arrow */
+        select {
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"%3E%3Cpath fill="%23000" d="M2 0L0 2h4z"/%3E%3C/svg%3E');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 10px;
+        }
+    
         .cart-summary {
             text-align: right;
         }
-
+    
         .empty-cart-message {
             text-align: center;
             margin-top: 2rem;
             font-size: 1.2rem;
             color: #888;
         }
-
+    
         .empty-cart-message a {
             text-decoration: none;
             color: #000;
             font-weight: bold;
         }
-
+    
         .empty-cart-message a:hover {
             text-decoration: underline;
         }
-
+    
         button {
             background-color: #000;
             color: #fff;
@@ -162,11 +163,11 @@
             border-radius: 5px;
             cursor: pointer;
         }
-
+    
         button:hover {
             background-color: #444;
         }
-
+    
         footer {
             text-align: center;
             padding: 1rem;
@@ -174,7 +175,7 @@
             color: #fff;
             margin-top: auto;
         }
-
+    
         .remove-item {
             color: #f00;
             background: none;
@@ -182,10 +183,11 @@
             cursor: pointer;
             font-size: 0.9rem;
         }
-
+    
         .remove-item:hover {
             text-decoration: underline;
         }
+    
         /* Style for Contact Links */
         .contact-links {
             display: flex;
@@ -213,8 +215,8 @@
         .contact-link:hover {
             color: #007bff; /* Hover color */
         }
-        
     </style>
+    
 </head>
 <body>
     <header>
