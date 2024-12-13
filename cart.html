@@ -251,9 +251,7 @@
 
    /* General Modal Styling */
 #delivery-form,
-#momo-modal,
-#success-modal,
-#error-modal {
+#momo-modal{
     display: none; /* Hidden by default */
     position: fixed;
     top: 0;
@@ -268,9 +266,7 @@
 
 /* Modal Content Styling */
 #delivery-form div,
-#momo-modal div,
-#success-modal div,
-#error-modal div {
+#momo-modal div {
     background: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -284,7 +280,7 @@
 @media (max-width: 768px) {
     #delivery-form div,
     #momo-modal div,
-    #success-modal div,
+    #closeErrorModal,
     #error-modal div {
         width: 95%; /* Increase width for very small devices */
         padding: 15px; /* Slightly reduce padding */
@@ -292,23 +288,18 @@
 
     /* Adjust heading and text sizes for smaller screens */
     #delivery-form h2,
-    #momo-modal h2,
-    #success-modal h2,
-    #error-modal h2 {
+    #momo-modal h2 {
         font-size: 18px;
         margin-bottom: 15px;
     }
 
     #delivery-form p,
     #momo-modal p,
-    #success-modal p,
-    #error-modal p,
     #delivery-form ol li {
         font-size: 14px;
         line-height: 1.5;
     }
 }
-
     
     </style>
 </head>
@@ -361,18 +352,16 @@
     </div>
 </div>
 
-<!-- Error modal -->
-<div id="error-modal">
-    <div>
-        <button class="close-btn" onclick="closeSuccessModal()" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 20px; font-weight: bold; cursor: pointer;">X</button>
+<!-- Error Modal -->
+<div id="error-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 9999; justify-content: center; align-items: center;">
+    <div onclick="event.stopPropagation();" style="background: #fff; padding: 20px; border-radius: 10px; max-width: 400px; text-align: center; width: 90%; position: relative;">
         <p id="error-message"></p>
     </div>
 </div>
 
 <!-- Success Modal -->
-<div id="success-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 9999; justify-content: center; align-items: center;">
-    <div style="background: #fff; padding: 20px; border-radius: 10px; max-width: 400px; text-align: center; width: 90%; position: relative;">
-        <button class="close-btn" onclick="closeSuccessModal()" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 20px; font-weight: bold; cursor: pointer;">X</button>
+<div id="success-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 9999; justify-content: center; align-items: center;" onclick="closeSuccessModal()">
+    <div onclick="event.stopPropagation();" style="background: #fff; padding: 20px; border-radius: 10px; max-width: 400px; text-align: center; width: 90%;">
         <h2 style="margin-bottom: 20px;">Order Successful!</h2>
         <p style="font-size: 16px; line-height: 1.5; margin-bottom: 20px;">
             Thank you for your order! We’ll contact you soon with delivery details.
@@ -380,7 +369,6 @@
         <button onclick="closeSuccessModal()" style="background: #000; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Close</button>
     </div>
 </div>
-
 
     <div class="breadcrumb">
         <a href="site.html">Home</a> / <a href="products.html">Store</a>
@@ -585,22 +573,29 @@
         }
     
         function showErrorModal(message) {
-            const errorModal = document.getElementById("error-modal");
-            document.getElementById("error-message").innerText = message;
-            errorModal.style.display = "flex";
-        }
+        const errorModal = document.getElementById('error-modal');
+        const errorMessage = document.getElementById('error-message');
+        errorMessage.textContent = message;
+        errorModal.style.display = 'flex';
+
+        // Close the modal when clicking outside the content
+        errorModal.onclick = closeErrorModal;
+    }
     
         function closeErrorModal() {
-            document.getElementById("error-modal").style.display = "none";
-        }
+        document.getElementById('error-modal').style.display = 'none';
+    }
 
-        function showSuccessModal() {
-    document.getElementById("success-modal").style.display = "flex";
-}
+    function showSuccessModal() {
+        const successModal = document.getElementById('success-modal');
+        successModal.style.display = 'flex';
+    }
 
-function closeSuccessModal() {
-    document.getElementById("success-modal").style.display = "none";
-}
+        function closeSuccessModal() {
+        document.getElementById('success-modal').style.display = 'none';
+    }
+
+
 
     
         function checkout() {
