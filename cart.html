@@ -541,7 +541,7 @@
             console.log("Submitting order:", { name, address, phone, cart });
     
             try {
-                const response = await fetch("https://fly-flask-holy-dawn-8116.fly.dev//send-order-email", {
+                const response = await fetch("https://fly-flask-holy-dawn-8116.fly.dev/send-order-email", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
